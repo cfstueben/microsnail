@@ -5,6 +5,9 @@ services:
     build:
       context: ../../
     image: microsnail-backend:dev
+    command: sh -c 'npm run tsc -- --watch & npm run nodemon -- --watch dist/ dist/index.js '
+    ports:
+      - 33333:3000
 
     volumes:
-      - ./src/:/app/
+      - ${WORKSPACE}/backend:/app/

@@ -11,6 +11,18 @@
         "cwd": "${workspaceFolder}/backend/deployment/dev"
       },
       "group": "build"
+    },
+    {
+      "label": "build watch backend",
+      "type": "shell",
+      "command": "docker-compose up",
+      "options": {
+        "env": {
+          "WORKSPACE":"${workspaceFolder}"
+        },
+        "cwd": "${workspaceFolder}/backend/deployment/dev"
+      },
+      "group": "build"
     }
   ]
 }
