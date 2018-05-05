@@ -1,8 +1,15 @@
 import * as express from 'express';
+import * as graphqlHTTP from 'express-graphql';
+import { buildSchema, GraphQLSchema } from 'graphql';
 
 class App {
-  public express: any;
+  public express: express.Express;
 
+  private schema: GraphQLSchema = buildSchema(`
+  type Query {
+    hello: String
+  }
+  `);
   constructor () {
     this.express = express();
     this.mountRoutes();
@@ -16,6 +23,12 @@ class App {
       });
     });
     this.express.use('/', router);
+    let root: any = { hello: () => 'Hello world!' };
+    this.express.use('/graphql', graphqlHTTP({
+      schema: this.schema,
+      rootValue: root,
+      graphiql: true
+    }));
   }
 }
 
