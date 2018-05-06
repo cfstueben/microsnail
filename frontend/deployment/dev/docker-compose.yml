@@ -5,7 +5,9 @@ services:
     build:
       context: ../../
     image: microsnail-frontend:dev
-    command: sh -c 'npm run gulp watch'
+    command: sh -c 'npm start & npm run watch'
+    stdin_open: true  
+    tty: true
     ports:
       - 33330:8080
 

@@ -9,7 +9,9 @@
     "start": "http-server -c-1 dist/",
     "http-server": "http-server",
     "webpack": "webpack",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "nodemon": "nodemon",
+    "watch": "nodemon -L --watch src --exec node_modules/gulp-cli/bin/gulp.js compile"
   },
   "author": "",
   "license": "MIT",

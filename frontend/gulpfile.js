@@ -24,7 +24,7 @@ gulp.task('compile', ['webpack']);
  
 gulp.task('watch', ['compile'], function () {
   var stream = nodemon({
-                 script: 'dist/', // run ES5 code
+                 script: 'node_modules/http-server/bin/http-server -c-1 dist/', // run ES5 code
                  watch: 'src', // watch ES2015 code
                  tasks: ['compile'] // compile synchronously onChange
                });
