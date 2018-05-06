@@ -7,9 +7,24 @@ class App {
 
   private schema: GraphQLSchema = buildSchema(`
   type Query {
-    hello: String
+    quoteOfTheDay: String
+    random: Float!
+    rollThreeDice: [Int]
   }
   `);
+
+  private root: any = {
+    quoteOfTheDay: () => {
+      return Math.random() < 0.5 ? 'Take it easy' : 'Salvation lies within';
+    },
+    random: () => {
+      return Math.random();
+    },
+    rollThreeDice: () => {
+      return [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6));
+    },
+  };
+
   constructor () {
     this.express = express();
     this.mountRoutes();
@@ -23,10 +38,9 @@ class App {
       });
     });
     this.express.use('/', router);
-    let root: any = { hello: () => 'Hello world!' };
     this.express.use('/graphql', graphqlHTTP({
       schema: this.schema,
-      rootValue: root,
+      rootValue: this.root,
       graphiql: true
     }));
   }

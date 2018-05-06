@@ -23,6 +23,27 @@
         "cwd": "${workspaceFolder}/backend/deployment/dev"
       },
       "group": "build"
+    },
+    {
+      "label": "build frontend",
+      "type": "shell",
+      "command": "docker-compose build",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend/deployment/dev"
+      },
+      "group": "build"
+    },
+    {
+      "label": "build watch frontend",
+      "type": "shell",
+      "command": "docker-compose up",
+      "options": {
+        "env": {
+          "WORKSPACE":"${workspaceFolder}"
+        },
+        "cwd": "${workspaceFolder}/frontend/deployment/dev"
+      },
+      "group": "build"
     }
   ]
 }

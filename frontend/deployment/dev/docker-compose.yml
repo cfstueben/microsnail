@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  app:
+    build:
+      context: ../../
+    image: microsnail-frontend:dev
+    command: sh -c 'npm run gulp watch'
+    ports:
+      - 33330:8080
+
+    volumes:
+      - ${WORKSPACE}/frontend:/app/
