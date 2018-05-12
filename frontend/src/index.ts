@@ -1,12 +1,36 @@
-import * as _ from 'lodash';
+/**
+ * @author       Digitsensitive <digit.sensitivee@gmail.com>
+ * @copyright    2018 Digitsensitive
+ * @license      Digitsensitive
+ */
 
-function component() {
-  var element = document.createElement('div');
+/// <reference path='../types/phaser.d.ts'/>
+import 'phaser';
+import { MainScene } from './scenes/mainScene';
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack', 'Here', 'is', 'test'], ' ');
+// main game configuration
+const config: GameConfig = {
+  width: 800,
+  height: 600,
+  type: Phaser.AUTO,
+  parent: 'game',
+  scene: MainScene,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 200 }
+    }
+  }
+};
 
-  return element;
+// game class
+export class Game extends Phaser.Game {
+  constructor(config: GameConfig) {
+    super(config);
+  }
 }
 
-document.body.appendChild(component());
+// when the page is loaded, create our game instance
+window.onload = () => {
+  let game = new Game(config);
+};

@@ -5,7 +5,7 @@ services:
     build:
       context: ../../
     image: microsnail-frontend:dev
-    command: sh -c 'npm start & npm run watch'
+    command: ["npm", "run", "dev"]
     stdin_open: true  
     tty: true
     ports:

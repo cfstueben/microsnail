@@ -44,6 +44,18 @@
         "cwd": "${workspaceFolder}/frontend/deployment/dev"
       },
       "group": "build"
-    }
+    },
+    {
+      "label": "interactive shell in docker",
+      "type": "shell",
+      "command": "docker-compose run --entrypoint=/bin/sh app",
+      "options": {
+        "env": {
+          "WORKSPACE": "${workspaceFolder}"
+        },
+        "cwd": "${workspaceFolder}/frontend/deployment/dev"
+      },
+      "group": "build"
+    },
   ]
 }
